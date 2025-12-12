@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Weather Dashboard — Live</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="left-col">
+      <div class="search-wrap">
+        <input id="searchInput" placeholder="Search for places ..." />
+        <button id="searchBtn" title="Search">🔍</button>
+      </div>
+
+      <div class="current-card card">
+        <div class="current-top">
+          <div>
+            <div class="date-small" id="localtime">—</div>
+            <div class="location" id="location">—</div>
+          </div>
+          <div id="iconWrap" class="icon-wrap">
+            <!-- current icon replaced by JS -->
+          </div>
+        </div>
+
+        <div class="temp-row">
+          <div class="temp-large" id="temp">—<span class="deg">°</span></div>
+          <div class="cond" id="condition">—</div>
+        </div>
+
+        <div class="current-meta">
+          <div>Feels like <span id="feels">—</span></div>
+          <div>Chance of rain <span id="chance">—</span></div>
+        </div>
+      </div>
+
+      <div class="card small-card">
+        <div class="small-title">Today's Details</div>
+        <div class="hourly-strip" id="hourly">
+          <!-- hourly chips inserted by JS -->
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-col">
+      <header class="top-controls">
+        <div class="toggle-group">
+          <button id="unitBtn" class="unit">°C</button>
+        </div>
+      </header>
+
+      <section class="grid">
+        <div class="card large-card">
+          <div class="grid-left">
+            <h3>7-Day Forecast</h3>
+            <ul id="forecastList" class="forecast-list"></ul>
+          </div>
+
+          <div class="grid-right">
+            <canvas id="weeklyChart" height="180"></canvas>
+            <div class="sun-times">
+              Sunrise: <span id="sunrise">—</span> · Sunset: <span id="sunset">—</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card stats-row">
+          <div class="stat">
+            <div class="stat-title">UV Index</div>
+            <div id="uv" class="stat-value">—</div>
+          </div>
+          <div class="stat">
+            <div class="stat-title">Wind</div>
+            <div id="wind" class="stat-value">—</div>
+          </div>
+          <div class="stat">
+            <div class="stat-title">Humidity</div>
+            <div id="humidity" class="stat-value">—</div>
+          </div>
+          <div class="stat">
+            <div class="stat-title">Visibility</div>
+            <div id="visibility" class="stat-value">—</div>
+          </div>
+        </div>
+
+        <div id="statusCard" class="card status-card" aria-live="polite">
+           <p>V.01</p>
+          <div id="loader" class="loader" style="display:none">Loading…</div>
+          <div id="error" class="error" style="display:none;color:#ff6b6b"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
